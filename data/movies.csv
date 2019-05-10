@@ -1,36 +1,26 @@
 RATING,TITLE,CREDIT,BOXOFFICE,YEAR
-85,Avengers: Infinity War,Natasha Romanoff/Black Widow,665,2018
-44,Rough Night,Jess,22.1,2017
-43,Ghost in the Shell,Major,40.6,2017
-72,Sing,Ash,270.4,2016
-91,Captain America: Civil War,Natasha Romanoff/Black Widow,408.1,2016
-95,The Jungle Book,Kaa,364,2016
-86,"Hail, Caesar!",DeeAnna Moran,28,2016
-75,Avengers: Age of Ultron,Natasha Romanoff/Black Widow,429.2,2015
-67,Lucy,Lucy,108.6,2014
-87,Chef,Molly,23.7,2014
-90,Captain America: The Winter Soldier,Natasha Romanoff/Black Widow,228.7,2014
-84,Under the Skin,Laura,2.4,2014
-94,Her,Samantha,18,2013
-60,Hitchcock,Janet Leigh,6.1,2012
-96,Chasing Ice,Actor,1.4,2012
-92,Marvel's The Avengers,Natasha Romanoff/Black Widow,623.3,2012
-64,We Bought a Zoo,Kelly Foster,72.8,2011
-73,Iron Man 2,Natalie Rushman/Black Widow,312.1,2010
-40,He's Just Not That Into You,Anna,93.9,2009
-14,The Spirit,Silken Floss,19.8,2008
-81,Vicky Cristina Barcelona,Cristina,23.2,2008
-42,The Other Boleyn Girl,Mary Boleyn,26.9,2008
-34,The Nanny Diaries,Annie Braddock,25.9,2007
-76,The Prestige,Olivia Wenscombe,53.2,2006
-33,The Black Dahlia,Kay Lake,22.6,2006
-41,Scoop,Sondra Pransky,10.5,2006
-76,Match Point,Nola Rice,23.2,2005
-40,The Island,Jordan Two Delta/Sarah Jordan,35.9,2005
-82,In Good Company,Alex Foreman,45.5,2004
-16,The Perfect Score,Francesca,10.3,2004
-72,Girl With a Pearl Earring,Griet,11.6,2004
-95,Lost In Translation,Charlotte,44.6,2003
-48,Eight Legged Freaks,Ashley Parker,17.3,2002
-81,The Man Who Wasn't There,Birdy Abundas,7.5,2001
-92,Ghost World,Rebecca,4.7,2001
+85,Avengers: Infinity War,Tony Stark/Iron Man,665,2018
+92,Spider-Man: Homecoming,Tony Stark/ Iron Man,334.2,2017
+91,Captain America: Civil War,Tony Stark/Iron Man,408.1,2016
+75,Avengers: Age of Ultron,Tony Stark/Iron Man,429.2,2015
+48,The Judge,Executive Producer     Hank Palmer,35.7,2014
+87,Chef,Marvin,23.7,2014
+79,Iron Man 3,Tony Stark,409,2013
+92,Marvel's The Avengers,Tony Stark/Iron Man,623.3,2012
+60,Sherlock Holmes: A Game of Shadows,Sherlock Holmes,186.9,2011
+40,Due Date,Peter Highman,100.5,2010
+73,Iron Man 2,Tony Stark,312.1,2010
+70,Sherlock Holmes,Sherlock Holmes,208.8,2009
+57,The Soloist,Steve Lopez,31.7,2009
+81,Tropic Thunder,Kirk Lazarus,110.5,2008
+67,The Incredible Hulk,Tony Stark,134.6,2008
+93,Iron Man,Tony Stark,318.3,2008
+29,Lucky You,Telephone Jack,5.8,2007
+57,Charlie Bartlett,Principal Gardner,3.8,2007
+90,Zodiac,Paul Avery,33.1,2007
+67,A Scanner Darkly,James Barris,5.3,2006
+26,The Shaggy Dog,Dr. Kozak,61.1,2006
+85,"Kiss Kiss, Bang Bang",Harry Lockhart,4.3,2005
+93,"Good Night, And Good Luck",Joe Wershba,31.6,2005
+14,Gothika,Dr. Pete Graham,59.6,2003
+94,Baby It's You,Stewart,2,1983

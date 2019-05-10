@@ -31,7 +31,7 @@ paleta = c("#404E4D",
 ```{r}
 ## ANTES DE USAR
 # Para criar data/movies.csv
-import_data("scarlett_johansson") # ou com o ator/atriz que você escolher
+import_data("robert_downey_jr") # ou com o ator/atriz que você escolher
 ```
 
 

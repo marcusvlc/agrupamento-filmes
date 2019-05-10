@@ -1,0 +1,58 @@
+---
+title: "Análise de filmes do Robert Downey Jr."
+author: "Marcus Vinicius L. Costa"
+date: "10 de maio de 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(here)
+library(cluster)
+library(plotly)
+library(ggdendro)
+
+source(here::here("code/lib.R"))
+theme_set(theme_report())
+
+knitr::opts_chunk$set(tidy = FALSE,
+                      fig.width = 6,
+                      fig.height = 5,
+                      echo = TRUE)
+
+paleta = c("#404E4D",
+           "#92DCE5",
+           "#938BA1",
+           "#2D3142",
+           "#F4743B")
+```
+
+
+```{r}
+## ANTES DE USAR
+# Para criar data/movies.csv
+import_data("robert_downey_jr") # ou com o ator/atriz que você escolher
+```
+
+```{r read}
+filmes = read_imported_data()
+```
+
+```{r}
+
+filmes = filmes %>% mutate(bilheteria_log = as.vector(scale(log10(bilheteria))), avaliacao_log = as.vector(scale(avaliacao)))
+
+m = as.matrix(cbind(filmes$avaliacao_log, filmes$bilheteria_log), ncol=2)
+
+km = kmeans(m,3)
+
+
+filmes_alterados = filmes %>% mutate(cluster = factor(km$cluster))
+
+center1 = filmes_alterados %>% filter(cluster == 1) %>% summarise(mediax = mean(avaliacao), mediay = mean(bilheteria))
+
+ggplot() + geom_point(data = filmes_alterados, aes(x = avaliacao, y = bilheteria, color = cluster)) + scale_y_log10()  + geom_point(data=center1, aes(x=mediax, y=mediay), size = 10)
+
+```
+
+
