@@ -5,7 +5,7 @@ date: "10 de maio de 2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(here)
 library(cluster)
@@ -25,18 +25,30 @@ paleta = c("#404E4D",
            "#938BA1",
            "#2D3142",
            "#F4743B")
+set.seed(123)
 ```
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 ## ANTES DE USAR
 # Para criar data/movies.csv
 import_data("robert_downey_jr") # ou com o ator/atriz que você escolher
 ```
 
-```{r read}
+```{r read, message=FALSE, warning=FALSE}
 filmes = read_imported_data()
 ```
+
+### Filmes inicialmente
+
+```{r}
+ggplotly(filmes %>% ggplot(aes(x= avaliacao, y = bilheteria)) + geom_point())
+```
+
+Inicialmente, temos essa divisão para os filmes do Robert Downey Jr., no entanto, apenas com essa visualização, não podemos observar claramente padrões em seus filmes, nem muito menos distinguir caracteristicas entre os mesmos, e para isso, mais a frente nesse relatório, utilizaremos um agrupamento pelo algoritmo k-means.
+
+
+### Divisão dos filmes em clusters
 
 ```{r}
 
@@ -47,12 +59,36 @@ m = as.matrix(cbind(filmes$avaliacao_log, filmes$bilheteria_log), ncol=2)
 km = kmeans(m,3)
 
 
+```
+
+
+```{r}
 filmes_alterados = filmes %>% mutate(cluster = factor(km$cluster))
 
-center1 = filmes_alterados %>% filter(cluster == 1) %>% summarise(mediax = mean(avaliacao), mediay = mean(bilheteria))
-
-ggplot() + geom_point(data = filmes_alterados, aes(x = avaliacao, y = bilheteria, color = cluster)) + scale_y_log10()  + geom_point(data=center1, aes(x=mediax, y=mediay), size = 10)
-
+ggplotly(filmes_alterados %>% 
+           ggplot(aes(x = avaliacao, y = bilheteria, colour = cluster, fill=cluster)) + 
+           geom_point(aes(text=sprintf("Filme: %s", filme ))) + 
+           scale_y_log10()
+         
+         )
 ```
+
+Nessa visualização, nós podemos perceber a clara formação de grupos a partir de pontos, e a isso, foi-se denominado a legenda “clusters”. Esses clusters foram gerados a partir do algoritmo k-means, e para isso, algumas alterações nas variáveis foram necessárias antes de executar esse algoritmo (utilizar a bilheteria em log10, por exemplo), para obter um melhor resultado.
+
+Para fins classificativos, daremos nomes a cada cluster, de forma que:
+
+- O cluster 1 (pontos vermelhos) terá o nome BLOCKBUSTERS
+- O cluster 2 (pontos verdes) terá o nome CULTS
+- O cluster 3 (pontos azuis) terá o nome ESTOU SEM DINHEIRO
+
+O cluster 1 foi denominado dessa maneira, pois os filmes que agregam os pontos vermelhos, ou seja, os filmes do Cluster BLOCKBUSTERS são filmes extremamente populares, e também com uma boa avaliação, que nada mais são que grandes produções que envolvem bastante tempo e dinheiro, um exemplo desses filmes é a triologia do Homem de Ferro.
+
+Já o cluster 2, ou “cluster CULTS” foi denominado dessa maneira pois são filmes extremamente bem avaliados, porém com pouca bilheteria, o que implica que são filmes para maiores entendedores da arte do cinema, que apreciam os mais pequenos detalhes o que usualmente não gera um grande interesse popular, explicando assim, a baixa bilheteria de alguns desses filmes. Um exemplo de um filme pertencente a esse cluster é o filme Baby It’s You, que é um filme extremamente aclamado pela crítica especializada mas nem tanto assim pelo público em geral, como pode ser visto nos dados do Rotten Tomatoes.
+
+Por fim, temos o cluster dos pontos azuis, ou como decidimos chamar, “Cluster ESTOU SEM DINHEIRO”, que é composto basicamente por filmes que não possuem grande bilheteria nem muito menos grandes avaliações, e como o próprio nome do cluster já diz, se trata de produções menores e com menos pretenção de sucesso, onde muitas vezes o ator se compromete apenas para ter algo para fazer naquele momento, arrumando assim, uma fonte de renda. Um exemplo de filme desta categoria é o filme Gothika, onde diversas vezes foi perguntado ao Robert o motivo de ter feito um filme que o mesmo já sabia que não ia ter nenhum sucesso.
+
+
+
+
 
 
